@@ -4,6 +4,10 @@
 
 [Unreleased]: https://github.com/electron/electron-packager/compare/v15.4.0...main
 
+### Fixed
+
+* `ElectronAsarIntegrity` is now automatically removed from the `asar` option is disabled (#1281)
+
 ## [15.4.0] - 2021-09-10
 
 [15.4.0]: https://github.com/electron/electron-packager/compare/v15.3.0...v15.4.0
