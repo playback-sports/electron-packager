@@ -100,7 +100,12 @@ class App {
   async initialize () {
     debug(`Initializing app in ${this.stagingPath} from ${this.templatePath} template`)
 
-    await fs.move(this.templatePath, this.stagingPath, { clobber: true })
+    let electronPath = this.templatePath;
+    if (this.opts.platform === 'darwin') {
+      electronPath = path.join(electronPath, `electron-v${this.opts.electronVersion}-${this.opts.platform}-${this.opts.arch}`)
+    }
+
+    await fs.move(electronPath, this.stagingPath, { clobber: true })
     await this.removeDefaultApp()
     if (this.opts.prebuiltAsar) {
       await this.copyPrebuiltAsar()
